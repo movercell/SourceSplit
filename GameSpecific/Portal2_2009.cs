@@ -67,19 +67,9 @@ namespace LiveSplit.SourceSplit.GameSpecific
             else if (!this.IsLastMap || _onceFlag)
                 return GameSupportResult.DoNothing;
 
-            if (state.PlayerEntInfo.EntityPtr != IntPtr.Zero && _playerSuppressingCrosshairOffset != -1)
+            if (state.GetEntityByName("campaign_incomplete_meow") == (IntPtr)0)
             {
-                bool crosshairSuppressed;
-                state.GameProcess.ReadValue(state.PlayerEntInfo.EntityPtr + _playerSuppressingCrosshairOffset, out crosshairSuppressed);
-
-                if (crosshairSuppressed && !_prevCrosshairSuppressed)
-                {
-                    _onceFlag = true;
-                    Debug.WriteLine("porto crosshair detected");
-                    return GameSupportResult.PlayerLostControl;
-                }
-
-                _prevCrosshairSuppressed = crosshairSuppressed;                
+                return GameSupportResult.PlayerLostControl;               
             }
 
             return GameSupportResult.DoNothing;
