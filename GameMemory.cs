@@ -141,7 +141,13 @@ namespace LiveSplit.SourceSplit
                 "E8 ?? ?? ?? ??",          // call    sub_100CE390
                 "8B 0D ?? ?? ?? ??",       // mov     ecx, dword_1043686C
                 "D9 1D");                  // fstp    frametime
-
+            // portal 2 july 2009 beta
+            _curTimeTarget.AddSignature(21,
+                "8B 96 C8 00 00 00",
+                "8B CE",
+                "89 15 ?? ?? ?? ??",
+                "E8 ?? ?? ?? ??",
+                "D9 1D ?? ?? ?? ??");      // fstp    curTime
             // CBaseClientState::m_nSignOnState (older engines)
             _signOnStateTarget1 = new SigScanTarget();
             _signOnStateTarget1.OnFound = (proc, scanner, ptr) => proc.ReadPointer(ptr, out ptr) ? ptr : IntPtr.Zero;
@@ -173,6 +179,12 @@ namespace LiveSplit.SourceSplit
                 "74 2D",                   // jz      short loc_693D4DFC
                 "8B 0D ?? ?? ?? ??",       // mov     ecx, baseclientstate
                 "8B 49 18");               // mov     mov     ecx, [ecx+18h]
+            // portal 2 july 2009 beta
+            _signOnStateTarget2.AddSignature(14,
+                "74 ??",                   
+                "8B 44 24 14",             
+                "83 78 30 00",             
+                "74 0C");                  
 
             // CBaseServer::m_szMapname[64]
             _curMapTarget = new SigScanTarget();

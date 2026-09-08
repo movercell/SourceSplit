@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace LiveSplit.SourceSplit.GameSpecific
 {
@@ -120,7 +121,12 @@ namespace LiveSplit.SourceSplit.GameSpecific
                 case "portal_tfv":
                     return new PortalTFV();
                 case "portal2":
-                    return new Portal2();
+                    DialogResult is2009 = MessageBox.Show("Will this be the July 2009 build?", "Version selection", MessageBoxButtons.YesNo);
+                    
+                    if (is2009 == DialogResult.Yes)
+                        return new Portal2_2009();
+                    else
+                        return new Portal2();
                 case "aperturetag":
                     return new ApertureTag();
                 case "portal_stories":

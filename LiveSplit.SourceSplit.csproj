@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LiveSplit.SourceSplit</RootNamespace>
     <AssemblyName>LiveSplit.SourceSplit</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -39,16 +39,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LiveSplit.Core">
-      <HintPath>..\..\public\LiveSplit\LiveSplit\bin\Debug\LiveSplit.Core.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>H:\Software\LiveSplit\LiveSplit.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UpdateManager">
-      <HintPath>..\..\public\LiveSplit\LiveSplit\bin\Debug\UpdateManager.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>H:\Software\LiveSplit\UpdateManager.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +56,7 @@
     <Compile Include="GameSpecific\HL2.cs" />
     <Compile Include="GameSpecific\HL2Ep1.cs" />
     <Compile Include="GameSpecific\HL2Ep2.cs" />
+    <Compile Include="GameSpecific\Portal2_2009.cs" />
     <Compile Include="GameSpecific\PortalTFV.cs" />
     <Compile Include="GameSpecific\Portal.cs" />
     <Compile Include="GameSpecific\Portal2.cs" />
