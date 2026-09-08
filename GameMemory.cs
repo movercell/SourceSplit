@@ -181,10 +181,7 @@ namespace LiveSplit.SourceSplit
                 "8B 49 18");               // mov     mov     ecx, [ecx+18h]
             // portal 2 july 2009 beta
             _signOnStateTarget2.AddSignature(14,
-                "74 ??",                   
-                "8B 44 24 14",             
-                "83 78 30 00",             
-                "74 0C");                  
+                "");                  
 
             // CBaseServer::m_szMapname[64]
             _curMapTarget = new SigScanTarget();
