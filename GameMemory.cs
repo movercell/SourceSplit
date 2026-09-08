@@ -178,10 +178,16 @@ namespace LiveSplit.SourceSplit
                 "83 7E 18 00",             // cmp     dword ptr [esi+18h], 0
                 "74 2D",                   // jz      short loc_693D4DFC
                 "8B 0D ?? ?? ?? ??",       // mov     ecx, baseclientstate
-                "8B 49 18");               // mov     mov     ecx, [ecx+18h]
+                "8B 49 18");               // mov     ecx, [ecx+18h]
             // portal 2 july 2009 beta
-            _signOnStateTarget2.AddSignature(14,
-                "");                  
+            _signOnStateTarget2.AddSignature(15,
+                "74 ??",                   // jz      short loc_693D4E22
+                "56",                      // push    esi
+                "8B 74 87 04",             // mov     esi, [edi+eax*4+4]
+                "83 7E 18 00",             // cmp     dword ptr [esi+18h], 0
+                "74 2D",                   // jz      short loc_693D4DFC
+                "8B 0D ?? ?? ?? ??",       // mov     ecx, baseclientstate
+                "8B 49 18");               // mov     ecx, [ecx+18h]               
 
             // CBaseServer::m_szMapname[64]
             _curMapTarget = new SigScanTarget();
