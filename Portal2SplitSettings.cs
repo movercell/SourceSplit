@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace LiveSplit.SourceSplit
+namespace LiveSplit.Portal2Split
 {
     public enum AutoSplitType
     {
@@ -20,7 +20,7 @@ namespace LiveSplit.SourceSplit
         //RealTimeWithoutLoads
     }
 
-    public partial class SourceSplitSettings : UserControl
+    public partial class Portal2SplitSettings : UserControl
     {
         public bool AutoSplitEnabled { get; set; }
         public int SplitInterval { get; set; }
@@ -79,7 +79,7 @@ namespace LiveSplit.SourceSplit
         private const AutoSplitType DEFAULT_AUTOSPLITYPE = AutoSplitType.Interval;
         private const GameTimingMethodSetting DEFAULT_GAME_TIMING_METHOD = GameTimingMethodSetting.Automatic;
 
-        public SourceSplitSettings()
+        public Portal2SplitSettings()
         {
             this.InitializeComponent();
             
@@ -116,7 +116,7 @@ namespace LiveSplit.SourceSplit
             Version version = Assembly.GetExecutingAssembly().GetName().Version;
 
             if (this.Parent?.Parent?.Parent != null && this.Parent.Parent.Parent.GetType().ToString() == "LiveSplit.View.ComponentSettingsDialog")
-                this.Parent.Parent.Parent.Text = $"SourceSplit v{version.ToString(3)} - Settings";
+                this.Parent.Parent.Parent.Text = $"Portal2Split v{version.ToString(3)} - Settings";
         }
 
         public XmlNode GetSettings(XmlDocument doc)

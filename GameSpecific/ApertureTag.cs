@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using LiveSplit.ComponentUtil;
 
-namespace LiveSplit.SourceSplit.GameSpecific
+namespace LiveSplit.Portal2Split.GameSpecific
 {
     class ApertureTag : GameSupport
     {

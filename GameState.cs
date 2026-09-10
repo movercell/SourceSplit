@@ -2,9 +2,9 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using LiveSplit.ComponentUtil;
-using LiveSplit.SourceSplit.GameSpecific;
+using LiveSplit.Portal2Split.GameSpecific;
 
-namespace LiveSplit.SourceSplit
+namespace LiveSplit.Portal2Split
 {
     // change back to struct if we ever need to give a copy of the state
     // to the ui thread

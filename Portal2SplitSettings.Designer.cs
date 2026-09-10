@@ -1,6 +1,6 @@
-﻿namespace LiveSplit.SourceSplit
+﻿namespace LiveSplit.Portal2Split
 {
-    partial class SourceSplitSettings
+    partial class Portal2SplitSettings
     {
         /// <summary> 
         /// Required designer variable.
@@ -42,7 +42,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.lbMapBlacklist = new LiveSplit.SourceSplit.EditableListBox();
+            this.lbMapBlacklist = new LiveSplit.Portal2Split.EditableListBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.rdoWhitelist = new System.Windows.Forms.RadioButton();
@@ -50,10 +50,10 @@
             this.rdoInterval = new System.Windows.Forms.RadioButton();
             this.dmnSplitInterval = new System.Windows.Forms.NumericUpDown();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lbMapWhitelist = new LiveSplit.SourceSplit.EditableListBox();
+            this.lbMapWhitelist = new LiveSplit.Portal2Split.EditableListBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbGameProcesses = new LiveSplit.SourceSplit.EditableListBox();
+            this.lbGameProcesses = new LiveSplit.Portal2Split.EditableListBox();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpAutoStartEndReset = new System.Windows.Forms.TableLayoutPanel();
             this.gbMisc = new System.Windows.Forms.GroupBox();
@@ -553,7 +553,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlpAutoStartEndReset);
-            this.Name = "SourceSplitSettings";
+            this.Name = "Portal2SplitSettings";
             this.Padding = new System.Windows.Forms.Padding(7);
             this.Size = new System.Drawing.Size(470, 449);
             this.groupBox1.ResumeLayout(false);

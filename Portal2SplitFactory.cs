@@ -1,21 +1,21 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
-using LiveSplit.SourceSplit;
+using LiveSplit.Portal2Split;
 using LiveSplit.UI.Components;
 using System;
 using LiveSplit.Model;
 
-[assembly: ComponentFactory(typeof(SourceSplitFactory))]
+[assembly: ComponentFactory(typeof(Portal2SplitFactory))]
 
-namespace LiveSplit.SourceSplit
+namespace LiveSplit.Portal2Split
 {
-    public class SourceSplitFactory : IComponentFactory
+    public class Portal2SplitFactory : IComponentFactory
     {
-        private SourceSplitComponent _instance;
+        private Portal2SplitComponent _instance;
 
-        public string ComponentName => "SourceSplit";
-        public string Description => "Game Time / Auto-splitting for Source engine games.";
+        public string ComponentName => "Portal2Split";
+        public string Description => "Game Time / Auto-splitting for Portal 2 and it's beta builds.";
         public ComponentCategory Category => ComponentCategory.Control;
 
         public IComponent Create(LiveSplitState state)
@@ -28,7 +28,7 @@ namespace LiveSplit.SourceSplit
             if (_instance != null && !_instance.Disposed)
             {
                 MessageBox.Show(
-                    "SourceSplit is already loaded in the " +
+                    "Portal2Split is already loaded in the " +
                         (_instance.IsLayoutComponent ? "Layout Editor" : "Splits Editor") + "!",
                     "Error",
                     MessageBoxButtons.OK,
@@ -37,12 +37,12 @@ namespace LiveSplit.SourceSplit
                 throw new Exception("Component already loaded.");
             }
 
-            return (_instance = new SourceSplitComponent(state, createAsLayoutComponent));
+            return (_instance = new Portal2SplitComponent(state, createAsLayoutComponent));
         }
 
         public string UpdateName => this.ComponentName;
-        public string UpdateURL => "http://fatalis.pw/livesplit/update/";
+        public string UpdateURL => null;
         public Version Version => Assembly.GetExecutingAssembly().GetName().Version;
-        public string XMLURL => this.UpdateURL + "Components/update.LiveSplit.SourceSplit.xml";
+        public string XMLURL => null;
     }
 }

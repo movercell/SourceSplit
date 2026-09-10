@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace LiveSplit.SourceSplit.GameSpecific
+namespace LiveSplit.Portal2Split.GameSpecific
 {
     abstract class GameSupport
     {

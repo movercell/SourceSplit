@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LiveSplit.SourceSplit
+namespace LiveSplit.Portal2Split
 {
     public partial class MapTimesForm : Form
     {

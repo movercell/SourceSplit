@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using LiveSplit.ComponentUtil;
 
-namespace LiveSplit.SourceSplit.GameSpecific
+namespace LiveSplit.Portal2Split.GameSpecific
 {
     class PortalTFV : GameSupport
     {

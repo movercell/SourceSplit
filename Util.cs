@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace LiveSplit.SourceSplit
+namespace LiveSplit.Portal2Split
 {
     public class Util
     {
@@ -80,7 +80,7 @@ namespace LiveSplit.SourceSplit
 
         public override void WriteLine(string message)
         {
-            base.WriteLine("SourceSplit: " + this.UpdateCount + " " + this.TickCount + " " + message);
+            base.WriteLine("Portal2Split: " + this.UpdateCount + " " + this.TickCount + " " + message);
         }
     }
 }

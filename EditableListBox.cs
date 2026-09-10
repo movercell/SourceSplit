@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace LiveSplit.SourceSplit
+namespace LiveSplit.Portal2Split
 {
     /// <summary>
     /// A DataGridView that emulates the look of a ListBox and can be edited.

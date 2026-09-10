@@ -1,4 +1,4 @@
-﻿namespace LiveSplit.SourceSplit
+﻿namespace LiveSplit.Portal2Split
 {
     partial class MapTimesForm
     {
@@ -94,7 +94,7 @@
             this.Controls.Add(this.tableLayoutPanel);
             this.Name = "MapTimesForm";
             this.ShowIcon = false;
-            this.Text = "SourceSplit: Map Times";
+            this.Text = "Portal2Split: Map Times";
             this.tableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 

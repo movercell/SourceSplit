@@ -1,5 +1,5 @@
-C:\Users\Velton\Documents\SourceSplit\bin\LiveSplit.SourceSplit.dll
-C:\Users\Velton\Documents\SourceSplit\bin\LiveSplit.SourceSplit.pdb
+C:\Users\Velton\Documents\SourceSplit\bin\LiveSplit.Portal2Split.dll
+C:\Users\Velton\Documents\SourceSplit\bin\LiveSplit.Portal2Split.pdb
 C:\Users\Velton\Documents\SourceSplit\bin\LiveSplit.Core.dll
 C:\Users\Velton\Documents\SourceSplit\bin\UpdateManager.dll
 C:\Users\Velton\Documents\SourceSplit\bin\SpeedrunComSharp.dll
@@ -24,11 +24,11 @@ C:\Users\Velton\Documents\SourceSplit\bin\LiveSplit.Core.dll.config
 C:\Users\Velton\Documents\SourceSplit\bin\UpdateManager.exe.config
 C:\Users\Velton\Documents\SourceSplit\bin\CustomFontDialog.dll.config
 C:\Users\Velton\Documents\SourceSplit\bin\Codaxy.Xlio.XmlSerializers.dll
-C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.SourceSplit.csproj.AssemblyReference.cache
-C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.SourceSplit.MapTimesForm.resources
-C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.SourceSplit.SourceSplitSettings.resources
-C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.SourceSplit.csproj.GenerateResource.cache
-C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.SourceSplit.csproj.CoreCompileInputs.cache
-C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSpli.794B1662.Up2Date
-C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.SourceSplit.dll
-C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.SourceSplit.pdb
+C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.Portal2Split.csproj.AssemblyReference.cache
+C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.Portal2Split.MapTimesForm.resources
+C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.Portal2Split.Portal2SplitSettings.resources
+C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.Portal2Split.csproj.GenerateResource.cache
+C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.Portal2Split.csproj.CoreCompileInputs.cache
+C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSpli.7723CD40.Up2Date
+C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.Portal2Split.dll
+C:\Users\Velton\Documents\SourceSplit\obj\Debug\LiveSplit.Portal2Split.pdb

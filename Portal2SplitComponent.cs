@@ -11,13 +11,13 @@ using System.Linq;
 using System.Xml;
 using System.Windows.Forms;
 
-namespace LiveSplit.SourceSplit
+namespace LiveSplit.Portal2Split
 {
-    class SourceSplitComponent : IComponent
+    class Portal2SplitComponent : IComponent
     {
-        public string ComponentName => "SourceSplit";
+        public string ComponentName => "Portal2Split";
 
-        public SourceSplitSettings Settings { get; set; }
+        public Portal2SplitSettings Settings { get; set; }
         public IDictionary<string, Action> ContextMenuControls { get; protected set; }
         protected InfoTimeComponent InternalComponent { get; set; }
 
@@ -75,7 +75,7 @@ namespace LiveSplit.SourceSplit
             }
         }
             
-        public SourceSplitComponent(LiveSplitState state, bool isLayoutComponent)
+        public Portal2SplitComponent(LiveSplitState state, bool isLayoutComponent)
         {
 #if DEBUG
             // make Debug.WriteLine prepend update count and tick count
@@ -87,11 +87,11 @@ namespace LiveSplit.SourceSplit
 
             this.IsLayoutComponent = isLayoutComponent;
 
-            this.Settings = new SourceSplitSettings();
+            this.Settings = new Portal2SplitSettings();
             this.InternalComponent = new InfoTimeComponent("Game Time", null, new RegularTimeFormatter(TimeAccuracy.Hundredths));
             
             this.ContextMenuControls = new Dictionary<String, Action>();
-            this.ContextMenuControls.Add("SourceSplit: Map Times", () => MapTimesForm.Instance.Show());
+            this.ContextMenuControls.Add("Portal2Split: Map Times", () => MapTimesForm.Instance.Show());
 
             _cache = new GraphicsCache();
 
@@ -121,9 +121,9 @@ namespace LiveSplit.SourceSplit
         }
 
 #if DEBUG
-        ~SourceSplitComponent()
+        ~Portal2SplitComponent()
         {
-            Debug.WriteLine("SourceSplitComponent finalizer");
+            Debug.WriteLine("Portal2SplitComponent finalizer");
         }
 #endif
 

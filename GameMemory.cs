@@ -8,9 +8,9 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using LiveSplit.ComponentUtil;
-using LiveSplit.SourceSplit.GameSpecific;
+using LiveSplit.Portal2Split.GameSpecific;
 
-namespace LiveSplit.SourceSplit
+namespace LiveSplit.Portal2Split
 {
     class GameMemory
     {
@@ -45,14 +45,14 @@ namespace LiveSplit.SourceSplit
 
         private bool _gotTickRate;
 
-        private SourceSplitSettings _settings;
+        private Portal2SplitSettings _settings;
 
         // TODO: match tickrate as closely as possible without going over
         // otherwise we will most likely read when the game isn't sleeping
         // must also account for variance of windows scheduler
         private const int TARGET_UPDATE_RATE = 13;
 
-        public GameMemory(SourceSplitSettings settings)
+        public GameMemory(Portal2SplitSettings settings)
         {
             _settings = settings;
 
