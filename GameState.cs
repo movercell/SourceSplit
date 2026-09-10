@@ -107,6 +107,7 @@ namespace LiveSplit.Portal2Split
         public IntPtr TickCountPtr => this.CurTimePtr + 12;
         public IntPtr IntervalPerTickPtr => this.TickCountPtr + 4;
         public IntPtr SignOnStatePtr;
+        public IntPtr? TimeScalePtr;
         public IntPtr CurMapPtr;
         public IntPtr GlobalEntityListPtr;
         public IntPtr GameDirPtr;

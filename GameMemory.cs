@@ -37,6 +37,7 @@ namespace LiveSplit.Portal2Split
         private SigScanTarget _curTimeTarget;
         private SigScanTarget _signOnStateTarget1;
         private SigScanTarget _signOnStateTarget2;
+        private SigScanTarget _timeScaleTarget;
         private SigScanTarget _curMapTarget;
         private SigScanTarget _globalEntityListTarget;
         private SigScanTarget _gameDirTarget;
@@ -187,7 +188,20 @@ namespace LiveSplit.Portal2Split
                 "83 7E 18 00",             // cmp     dword ptr [esi+18h], 0
                 "74 2D",                   // jz      short loc_693D4DFC
                 "8B 0D ?? ?? ?? ??",       // mov     ecx, baseclientstate
-                "8B 49 18");               // mov     ecx, [ecx+18h]               
+                "8B 49 18");               // mov     ecx, [ecx+18h]
+
+            // portal 2 july 2009 beta
+            _timeScaleTarget = new SigScanTarget();
+            _timeScaleTarget.AddSignature(30,
+                "8b 15 ?? ?? ?? ??",        // MOV EDX,dword ptr [host_timescale_convar_ig]
+                "f3 0f 10 4a 2c",           // MOVSS XMM1,dword ptr [EDX + 0x2c]
+                "eb ??",                    // JMP [idk]
+                "f3 0f 10 0c 24",           // MOVSS      XMM1,dword ptr [ESP]
+                "8b 0d ?? ?? ?? ??",        // MOV        ECX,dword ptr [idk]
+                "8b 01",                    // MOV        EAX,dword ptr [ECX]
+                "f3 0f 10 05 ?? ?? ?? ??",  // MOVSS      XMM0,dword ptr [Timescale]
+                "8b 50 18",                 // MOV        EDX,dword ptr [EAX + 0x18]
+                "f3 0f 59 c1");             // MULSS      XMM0,XMM1
 
             // CBaseServer::m_szMapname[64]
             _curMapTarget = new SigScanTarget();
@@ -365,6 +379,8 @@ namespace LiveSplit.Portal2Split
             if ((offsets.SignOnStatePtr = scanner.Scan(_signOnStateTarget1)) == IntPtr.Zero
                 && (offsets.SignOnStatePtr = scanner.Scan(_signOnStateTarget2)) == IntPtr.Zero)
                 return false;
+
+            offsets.TimeScalePtr = scanner.Scan(_timeScaleTarget);
 
             // required server stuff
             var serverScanner = new SignatureScanner(p, server.BaseAddress, server.ModuleMemorySize);
