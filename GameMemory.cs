@@ -190,18 +190,20 @@ namespace LiveSplit.Portal2Split
                 "8B 0D ?? ?? ?? ??",       // mov     ecx, baseclientstate
                 "8B 49 18");               // mov     ecx, [ecx+18h]
 
-            // portal 2 july 2009 beta
+
             _timeScaleTarget = new SigScanTarget();
+            _timeScaleTarget.OnFound = (proc, scanner, ptr) => proc.ReadPointer(ptr, out ptr) ? ptr : IntPtr.Zero;
+            // portal 2 july 2009 beta
             _timeScaleTarget.AddSignature(30,
-                "8b 15 ?? ?? ?? ??",        // MOV EDX,dword ptr [host_timescale_convar_ig]
-                "f3 0f 10 4a 2c",           // MOVSS XMM1,dword ptr [EDX + 0x2c]
-                "eb ??",                    // JMP [idk]
-                "f3 0f 10 0c 24",           // MOVSS      XMM1,dword ptr [ESP]
-                "8b 0d ?? ?? ?? ??",        // MOV        ECX,dword ptr [idk]
-                "8b 01",                    // MOV        EAX,dword ptr [ECX]
-                "f3 0f 10 05 ?? ?? ?? ??",  // MOVSS      XMM0,dword ptr [Timescale]
-                "8b 50 18",                 // MOV        EDX,dword ptr [EAX + 0x18]
-                "f3 0f 59 c1");             // MULSS      XMM0,XMM1
+                "8B 15 ?? ?? ?? ??",        // MOV EDX,dword ptr [host_timescale_convar_ig]
+                "F3 0F 10 4A 2C",           // MOVSS XMM1,dword ptr [EDX + 0x2c]
+                "EB ??",                    // JMP [idk]
+                "F3 0F 10 0C 24",           // MOVSS      XMM1,dword ptr [ESP]
+                "8B 0D ?? ?? ?? ??",        // MOV        ECX,dword ptr [idk]
+                "8B 01",                    // MOV        EAX,dword ptr [ECX]
+                "F3 0F 10 05 ?? ?? ?? ??",  // MOVSS      XMM0,dword ptr [Timescale]
+                "8B 50 18",                 // MOV        EDX,dword ptr [EAX + 0x18]
+                "F3 0F 59 C1");             // MULSS      XMM0,XMM1
 
             // CBaseServer::m_szMapname[64]
             _curMapTarget = new SigScanTarget();
@@ -525,6 +527,7 @@ namespace LiveSplit.Portal2Split
             GameOffsets offsets = state.GameOffsets;
 
             // update all the stuff that doesn't depend on the signon state
+            state.PrevRawTickCount = state.RawTickCount;
             game.ReadValue(offsets.TickCountPtr, out state.RawTickCount);
             game.ReadValue(offsets.IntervalPerTickPtr, out state.IntervalPerTick);
 
@@ -549,6 +552,8 @@ namespace LiveSplit.Portal2Split
 
                     // start rebasing from this tick
                     state.TickBase = state.RawTickCount;
+                    state.PrevRawTickCount = state.RawTickCount;
+                    state.JankyTimeScaleWorkaround = 0;
                     Debug.WriteLine("rebasing ticks from " + state.TickBase);
 
                     // player was just spawned, get it's ptr
@@ -559,7 +564,16 @@ namespace LiveSplit.Portal2Split
                 }
 
                 // update time and rebase it against the first signon state full tick
-                state.TickCount = state.RawTickCount - state.TickBase;
+                if (state.GameOffsets.TimeScalePtr.HasValue)
+                {
+                    float timescale = state.GameProcess.ReadValue<float>(state.GameOffsets.TimeScalePtr.Value);
+                    state.JankyTimeScaleWorkaround += ((state.RawTickCount - state.PrevRawTickCount) / timescale);
+                    state.TickCount = (int)state.JankyTimeScaleWorkaround;
+                }
+                else
+                {
+                    state.TickCount = state.RawTickCount - state.TickBase;
+                }
                 state.TickTime = state.TickCount * state.IntervalPerTick;
                 TimedTraceListener.Instance.TickCount = state.TickCount;
 
@@ -617,8 +631,8 @@ namespace LiveSplit.Portal2Split
             if (state.IntervalPerTick > 0 && !_gotTickRate)
             {
                 _gotTickRate = true;
-                this.SendSetTickRateEvent(state.IntervalPerTick);
-            }
+                    this.SendSetTickRateEvent(state.IntervalPerTick);
+                }
 
             if (state.SignOnState != state.PrevSignOnState)
                 Debug.WriteLine("SignOnState changed to " + state.SignOnState);

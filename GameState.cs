@@ -28,8 +28,10 @@ namespace LiveSplit.Portal2Split
         public string GameDir;
 
         public float IntervalPerTick;
+        public int PrevRawTickCount;
         public int RawTickCount;
         public int TickBase;
+        public double JankyTimeScaleWorkaround = 0.0f;
         public int TickCount;
         public float TickTime;
 
